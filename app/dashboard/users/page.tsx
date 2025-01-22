@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 interface TenantUser {
   id: string;
@@ -113,9 +114,17 @@ export default function UsersPage() {
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
                   {users.map((user) => (
-                    <tr key={user.id}>
+                    <tr
+                      key={user.id}
+                      className="cursor-pointer hover:bg-gray-50"
+                    >
                       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                        {user.name}
+                        <Link
+                          href={`/dashboard/users/${user.id}`}
+                          className="text-gray-900 hover:text-gray-700"
+                        >
+                          {user.name}
+                        </Link>
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         {user.email}
